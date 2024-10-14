@@ -30,22 +30,28 @@ Or include it in your HTML:
 ```
 
 ## Usage
+
 Here's a quick example of how to use Data Import JS to import a CSV file:
 
 ```javascript
-import DataImport from 'data-import-js';
+import DataImport from "data-import-js";
 
 const importer = new DataImport();
 
-importer.importCSV('path/to/your/file.csv').then(data => {
-    console.log('Imported Data:', data);
-}).catch(error => {
-    console.error('Import Error:', error);
-});
+importer
+  .importCSV("path/to/your/file.csv")
+  .then((data) => {
+    console.log("Imported Data:", data);
+  })
+  .catch((error) => {
+    console.error("Import Error:", error);
+  });
 ```
 
 ## Contributing
+
 We welcome contributions!
 
 ## License
+
 This project is licensed under the MIT License.

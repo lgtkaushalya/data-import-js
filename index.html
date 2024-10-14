@@ -1,79 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSV File Upload and Parse</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <style>
-        /* Style the container to center the button */
-        .input-file-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Full viewport height */
-        }
+      /* Style the container to center the button */
+      .input-file-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full viewport height */
+      }
 
-        /* Hide the actual file input */
-        input[type="file"] {
-            opacity: 0;
-            position: absolute;
-            z-index: -1;
-        }
+      /* Hide the actual file input */
+      input[type="file"] {
+        opacity: 0;
+        position: absolute;
+        z-index: -1;
+      }
 
-        /* Style the label as the visible button */
-        .input-file {
-            text-align: center;
-            background-color: #3276b1;
-            color: #fff;
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 17px;
-            font-weight: bold;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Button shadow */
-            cursor: pointer;
-            transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
-        }
+      /* Style the label as the visible button */
+      .input-file {
+        text-align: center;
+        background-color: #3276b1;
+        color: #fff;
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 17px;
+        font-weight: bold;
+        border-radius: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Button shadow */
+        cursor: pointer;
+        transition:
+          background-color 0.3s,
+          box-shadow 0.3s; /* Smooth transitions */
+      }
 
-        /* Button hover effect */
-        .input-file:hover {
-            background-color: #285a8b;
-            box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
-        }
+      /* Button hover effect */
+      .input-file:hover {
+        background-color: #285a8b;
+        box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+      }
 
-        /* Button click effect */
-        .input-file:active {
-            background-color: #204d73;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow on click */
-        }
-         </style>        
-</head>
-<body>
+      /* Button click effect */
+      .input-file:active {
+        background-color: #204d73;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow on click */
+      }
+    </style>
+  </head>
+  <body>
     <div class="input-file-container">
-        <label class="input-file">
-            Choose File<input type="file" id="uploadCsv" accept=".csv">
-        </label>
+      <label class="input-file">
+        Choose File<input type="file" id="uploadCsv" accept=".csv" />
+      </label>
     </div>
     <script>
-        // Listen for file input change
-        document.getElementById('uploadCsv').addEventListener('change', function(event) {
-            const file = event.target.files[0]; // Get the selected file
+      // Listen for file input change
+      document
+        .getElementById("uploadCsv")
+        .addEventListener("change", function (event) {
+          const file = event.target.files[0]; // Get the selected file
 
-            if (file) {
-                Papa.parse(file, {
-                    header: true,  // If you want to parse the header row
-                    complete: function(results) {
-                        console.log('Parsed Data:', results.data); // Output the parsed data to console
-                    },
-                    error: function(error) {
-                        console.error('Error while parsing:', error); // Handle parsing errors
-                    }
-                });
-            } else {
-                console.log('No file selected.');
-            }
+          if (file) {
+            Papa.parse(file, {
+              header: true, // If you want to parse the header row
+              complete: function (results) {
+                console.log("Parsed Data:", results.data); // Output the parsed data to console
+              },
+              error: function (error) {
+                console.error("Error while parsing:", error); // Handle parsing errors
+              },
+            });
+          } else {
+            console.log("No file selected.");
+          }
         });
     </script>
-</body>
+  </body>
 </html>
